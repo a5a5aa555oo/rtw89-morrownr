@@ -129,6 +129,7 @@ rtw89_usb_git-y := usb.o
 
 ccflags-y += -Wno-compare-distinct-pointer-types
 ccflags-y += -DCONFIG_RTW89_DEBUGMSG -DCONFIG_RTW89_DEBUGFS
+ccflags-y += -DCONFIG_RTW89_LEDS -DCONFIG_RTW89_LEDS_MC
 ccflags-y += -DGIT_COMMIT=$(shell git --git-dir=$(src)/.git rev-parse HEAD)
 
 else

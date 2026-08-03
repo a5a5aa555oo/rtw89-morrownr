@@ -19,6 +19,19 @@ enum pcie_rxbd_mode {
 #define PL0_TMR_MAC_1MS 0x27100
 #define PL0_TMR_AUX_1MS 0x1E848
 
+#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 8, 0)
+static void pci_clear_and_set_config_dword(const struct pci_dev *dev, int pos,
+				    u32 clear, u32 set)
+{
+	u32 val;
+
+	pci_read_config_dword(dev, pos, &val);
+	val &= ~clear;
+	val |= set;
+	pci_write_config_dword(dev, pos, val);
+}
+#endif
+
 static void rtw89_pci_aspm_set_be(struct rtw89_dev *rtwdev, bool enable)
 {
 	struct rtw89_pci *rtwpci = (struct rtw89_pci *)rtwdev->priv;
