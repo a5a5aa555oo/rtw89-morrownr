@@ -36,6 +36,12 @@ struct rtw89_fw_cmd_ofld_info;
 
 extern const struct ieee80211_ops rtw89_ops;
 
+#if LINUX_VERSION_CODE < KERNEL_VERSION(7, 3, 0)
+#define PCI_VENDOR_ID_SPACEMIT         0x201f
+#define PCI_DEVICE_ID_SPACEMIT_K1      0x0001
+#define PCI_DEVICE_ID_SPACEMIT_K3      0x0002
+#endif
+
 #if LINUX_VERSION_CODE < KERNEL_VERSION(6, 19, 0)
 /**
  * field_get() - extract a bitfield element
