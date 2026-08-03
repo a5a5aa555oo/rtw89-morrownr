@@ -5466,7 +5466,7 @@ static void rtw89_track_ps_work(struct wiphy *wiphy, struct wiphy_work *work)
 	if (rtwdev->scanning)
 		return;
 
-	if (rtwdev->lps_enabled && !rtwdev->btc.lps)
+	if (rtwdev->lps_enabled && !rtwdev->btc.btc_ctrl_lps)
 		rtw89_enter_lps_track(rtwdev, RTW89_TFC_INTERVAL_100MS);
 }
 
@@ -5514,7 +5514,7 @@ static void rtw89_track_work(struct wiphy *wiphy, struct wiphy_work *work)
 	rtw89_core_rfkill_poll(rtwdev, false);
 	rtw89_core_mlo_track(rtwdev);
 
-	if (rtwdev->lps_enabled && !rtwdev->btc.lps)
+	if (rtwdev->lps_enabled && !rtwdev->btc.btc_ctrl_lps)
 		rtw89_enter_lps_track(rtwdev, RTW89_TFC_INTERVAL_2SEC);
 }
 
