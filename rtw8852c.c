@@ -3325,6 +3325,7 @@ const struct rtw89_chip_info rtw8852c_chip_info = {
 #endif
 	.xtal_info		= NULL,
 	.default_quirks		= 0,
+	.txtime_limit_2ghz	= 0,
 };
 EXPORT_SYMBOL(rtw8852c_chip_info);
 
