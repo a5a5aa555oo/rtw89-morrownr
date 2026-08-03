@@ -5097,6 +5097,9 @@ struct rtw89_txpwr_rule_6ghz {
 struct rtw89_tx_shape {
 	const u8 (*lmt)[RTW89_BAND_NUM][RTW89_RS_TX_SHAPE_NUM][RTW89_REGD_NUM];
 	const u8 (*lmt_ru)[RTW89_BAND_NUM][RTW89_REGD_NUM];
+
+	const u8 (*lmt_v0)[RTW89_BAND_NUM][RTW89_RS_TX_SHAPE_NUM][RTW89_REGD_NUM];
+	const u8 (*lmt_ru_v0)[RTW89_BAND_NUM][RTW89_REGD_NUM];
 };
 
 struct rtw89_rfe_parms {
@@ -8642,7 +8645,13 @@ static inline u8 rtw89_get_tx_shape_idx(struct rtw89_dev *rtwdev, u8 band,
 	if (unlikely(rs >= RTW89_RS_TX_SHAPE_NUM))
 		rs = RTW89_RS_OFDM;
 
+	if (!tx_shape->lmt)
+		goto v0;
+
 	return (*tx_shape->lmt)[band][rs][regd];
+
+v0:
+	return (*tx_shape->lmt_v0)[band][rs][regd];
 }
 
 static inline void rtw89_ctrl_btg_bt_rx(struct rtw89_dev *rtwdev, bool en,
