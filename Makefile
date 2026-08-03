@@ -22,7 +22,8 @@ rtw89_core_git-y += core.o \
 		    acpi.o \
 		    util.o \
 		    debug.o \
-		    led.o
+		    led.o \
+		    led_mc.o
 
 rtw89_core_git-$(CONFIG_PM) += wow.o
 
