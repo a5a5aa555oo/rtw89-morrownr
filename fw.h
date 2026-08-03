@@ -5815,6 +5815,7 @@ struct rtw89_fw_tx_shape_lmt_entry {
 	u8 tx_shape_rs;
 	u8 regd;
 	u8 v;
+	u8 reg6_pwr;
 } __packed;
 
 /* must consider compatibility; don't insert new in the mid */
@@ -5822,6 +5823,7 @@ struct rtw89_fw_tx_shape_lmt_ru_entry {
 	u8 band;
 	u8 regd;
 	u8 v;
+	u8 reg6_pwr;
 } __packed;
 
 const struct rtw89_rfe_parms *
