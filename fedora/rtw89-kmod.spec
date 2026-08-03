@@ -26,7 +26,7 @@
 %{!?buildforkernels: %global buildforkernels akmod}
 
 # Upstream version (sourced from dkms.conf via fedora/Makefile --define).
-%{!?kmod_version: %global kmod_version 7.2}
+%{!?kmod_version: %global kmod_version 7.3}
 
 Name:           %{kmod_name}-kmod
 Version:        %{kmod_version}
@@ -91,14 +91,14 @@ done
 
 %build
 for kernel_version in %{?kernel_versions} ; do
-    make -C "${kernel_version##*___}" M="${PWD}/_kmod_build_${kernel_version%%___*}" \
+    make -j$(nproc --ignore=1) -C "${kernel_version##*___}" M="${PWD}/_kmod_build_${kernel_version%%___*}" \
         KVER="${kernel_version%%___*}" KDIR="${kernel_version##*___}" modules
 done
 
 # Number of modules the driver Makefile is expected to produce (21: core +
 # per-chip + per-bus variants). Guards against silent packaging drift if the
 # upstream Makefile gains/loses an obj-m target.
-%global expected_modules 21
+%global expected_modules 23
 
 %install
 for kernel_version in %{?kernel_versions} ; do
@@ -122,6 +122,9 @@ done
 install -Dm 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/modprobe.d/%{kmod_name}.conf
 
 %changelog
+* Tue Aug 4 2026 jim60105 - 7.3-1
+- New upstream release v7.3.
+
 * Tue Jun 30 2026 jim60105 - 7.2-1
 - Initial kmod/akmod package based on morrownr/rtw89 version 7.2.
 - Works on immutable / rpm-ostree systems (Fedora Kinoite) via akmods.

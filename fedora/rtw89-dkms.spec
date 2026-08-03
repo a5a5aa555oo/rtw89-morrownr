@@ -1,10 +1,10 @@
 %global dkms_name rtw89
 # dkms_version is passed via --define from fedora/Makefile (sourced from ../dkms.conf)
-%{!?dkms_version: %global dkms_version 7.2}
+%{!?dkms_version: %global dkms_version 7.3}
 
 Name:           %{dkms_name}-dkms
 Version:        %{dkms_version}
-Release:        5%{?dist}
+Release:        1%{?dist}
 Summary:        Out-of-tree DKMS driver for Realtek rtw89 WiFi chips
 License:        GPL-2.0-only OR BSD-3-Clause
 URL:            https://github.com/morrownr/rtw89
@@ -60,5 +60,11 @@ dkms remove -m %{dkms_name} -v %{dkms_version} -q --all --rpm_safe_upgrade
 %config(noreplace) %{_sysconfdir}/modprobe.d/rtw89.conf
 
 %changelog
+* Tue Aug 4 2026 Doncho Nikolaev Gunchev <dgunchev@gmail.com> - 7.3-1
+- New upstream release v7.3.
+
+* Tue Jun 30 2026 Doncho Nikolaev Gunchev <dgunchev@gmail.com> - 7.2-5
+- New upstream release v7.2.
+
 * Tue Apr 21 2026 Doncho Nikolaev Gunchev <dgunchev@gmail.com> - 7.1-5
 - Initial package based on morrownr/rtw89 version 7.1
