@@ -9,7 +9,7 @@ Compatible with **Linux kernel versions 6.6 and newer** as long as your distro h
 #### Supported chips
 - **USB** : RTL8831BU, RTL8851BU, RTL8832AU, RTL8852AU, RTL8832BU, RTL8852BU
 - **USB** : RTL8832CU, RTL8852CU, RTL8912AU, RTL8922AU
-- **PCIe**: RTL8851BE, RTL8852AE, RTL8852BE(-VS, -VT), RTL8852CE, RTL8922AE(-VS)
+- **PCIe**: RTL8851BE, RTL8852AE, RTL8852BE(-VS, -VT), RTL8852CE, RTL8922AE(-VS), RTL8922DE(-VS)
 
 Note: If you own a USB WiFi adapter with any of the above supported
 chips and your adapter is single-state (no Windows driver on board) and
